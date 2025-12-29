@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Methodology | Research Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="brand">Research Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Overview</a></li>
+                <li><a href="problem.html">Problem</a></li>
+                <li><a href="framework.html">Framework</a></li>
+                <li><a href="methodology.html" class="active">Methodology</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding-bottom: 20px;">
+        <div class="container">
+            <h1>Research Methodology</h1>
+            <p class="subtitle">Simulation Setup, Data Generation, and Model Training Pipeline.</p>
+        </div>
+    </header>
+
+    <main class="container content">
+        
+        <section>
+            <h2>Experimental Setup</h2>
+            <p>
+                Due to the destructive nature of failure testing on real high-power inverters, this research utilizes a <strong>Hardware-in-the-Loop (HIL) Simulation</strong> approach as a preliminary validation step.
+            </p>
+        </section>
+
+        <section>
+            <div class="highlight-box" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #003366;">
+                <h3>Phase 1: Data Generation (PLECS)</h3>
+                <p>
+                    A 3-Phase Inverter model is built in <strong>PLECS</strong> simulation software. To simulate aging, we inject degradation parameters:
+                </p>
+                <ul style="list-style-type: disc; margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Bond-wire lift-off:</strong> Simulated by increasing resistance ($R_{on}$) by 5-20%.</li>
+                    <li><strong>Solder fatigue:</strong> Simulated by increasing thermal impedance ($Z_{th}$).</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #003366; margin-top: 20px;">
+                <h3>Phase 2: Pre-processing</h3>
+                <p>
+                    Raw data from the simulation (Voltage, Current, Temperature) is sampled at 10 kHz. The data is then normalized using <strong>Min-Max Scaling</strong> to ensure stability during neural network training.
+                </p>
+            </div>
+
+            <div class="highlight-box" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #003366; margin-top: 20px;">
+                <h3>Phase 3: Model Training</h3>
+                <p>
+                    The dataset is split into Training (70%), Validation (15%), and Testing (15%). The LSTM model is trained using the <strong>Adam Optimizer</strong> with a learning rate of 0.001 to minimize the Mean Squared Error (MSE) loss function.
+                </p>
+            </div>
+        </section>
+
+        <section style="margin-top: 40px;">
+            <h2>Tools & Technologies</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;">
+                <div style="background: #eef5fc; padding: 15px; border-radius: 5px;">
+                    <strong>PLECS</strong><br><span style="font-size: 0.8rem;">Circuit Simulation</span>
+                </div>
+                <div style="background: #eef5fc; padding: 15px; border-radius: 5px;">
+                    <strong>Python</strong><br><span style="font-size: 0.8rem;">Data Processing</span>
+                </div>
+                <div style="background: #eef5fc; padding: 15px; border-radius: 5px;">
+                    <strong>TensorFlow</strong><br><span style="font-size: 0.8rem;">Deep Learning</span>
+                </div>
+                <div style="background: #eef5fc; padding: 15px; border-radius: 5px;">
+                    <strong>MATLAB</strong><br><span style="font-size: 0.8rem;">Analysis</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 M Heru Sunardi. Research Portfolio for KUAS Application.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

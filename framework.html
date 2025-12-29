@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposed Framework | Research Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="brand">Research Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Overview</a></li>
+                <li><a href="problem.html">Problem</a></li>
+                <li><a href="framework.html" class="active">Framework</a></li>
+                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding-bottom: 20px;">
+        <div class="container">
+            <h1>Proposed Framework</h1>
+            <p class="subtitle">A Hybrid Architecture: Combining Physics-Based Features with Deep Learning.</p>
+        </div>
+    </header>
+
+    <main class="container content">
+        
+        <section>
+            <h2>System Architecture</h2>
+            <p>The proposed framework consists of three distinct layers designed to transform raw sensor data into actionable maintenance decisions.</p>
+            
+            <div class="diagram-container" style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; overflow-x: auto; text-align: center; margin-bottom: 30px;">
+                <pre class="mermaid">
+                graph LR
+                    %% Gaya Visual
+                    classDef input fill:#e0e0e0,stroke:#666,stroke-width:1px;
+                    classDef process fill:#eef5fc,stroke:#003366,stroke-width:2px;
+                    classDef result fill:#003366,stroke:#003366,stroke-width:2px,color:#fff;
+
+                    %% Node
+                    Raw[("Sensor Data<br/>(V, I, Temp)")]:::input
+                    
+                    subgraph Layer1 [Layer 1: Physics Extraction]
+                        direction TB
+                        Feat[Feature<br/>Extraction]:::process
+                    end
+
+                    subgraph Layer2 [Layer 2: AI Prediction]
+                        direction TB
+                        LSTM[LSTM<br/>Network]:::process
+                    end
+
+                    subgraph Layer3 [Layer 3: Decision]
+                        direction TB
+                        RUL([RUL<br/>Estimation]):::result
+                    end
+
+                    %% Koneksi
+                    Raw --> Feat
+                    Feat -->|Physics Indicators| LSTM
+                    LSTM --> RUL
+                </pre>
+            </div>
+        </section>
+
+        <section>
+            <h3>Layer 1: Physics-Based Indicators</h3>
+            <p>
+                Instead of feeding raw noisy signals directly into the AI, this layer utilizes domain knowledge to extract meaningful features. Key indicators include <strong>Collector-Emitter Voltage ($V_{ce}$)</strong> shifts and thermal impedance changes, which are direct physical symptoms of IGBT bond-wire fatigue.
+            </p>
+
+            <h3>Layer 2: AI Prediction (LSTM)</h3>
+            <p>
+                The extracted physics features serve as input for a <strong>Long Short-Term Memory (LSTM)</strong> network. LSTM was chosen for its ability to capture long-term temporal dependencies in time-series data, making it ideal for tracking the slow degradation process of power electronics.
+            </p>
+
+            <h3>Layer 3: Decision Support</h3>
+            <p>
+                The final layer outputs the <strong>Remaining Useful Life (RUL)</strong>. A threshold-based logic is applied to categorize the component health status (Healthy, Warning, or Critical), providing clear maintenance recommendations to operators.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 M Heru Sunardi. Research Portfolio for KUAS Application.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+</body>
+</html>
